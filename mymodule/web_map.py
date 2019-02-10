@@ -189,8 +189,8 @@ def map_maker(name_csv_file, year, country_dict):
 	fg_counry_statistic = folium.FeatureGroup(name="Country_stat")
 	for lt, ln, titles in zip(lat, lon, films):
 		fg_simple.add_child(folium.CircleMarker(location=[lt, ln],
-												popup=("films: " +
-													   titles),
+												popup=(
+												"films: " + titles),
 												fill_color="blue",
 												radius=25,
 												fill_opacity=0.5))
@@ -214,18 +214,13 @@ def map_maker(name_csv_file, year, country_dict):
 			icon=folium.Icon(color=size_colour_creator(n)[1])))
 		fg_counry_statistic.add_child(folium.GeoJson(data=open(
 			'world.json', 'r', encoding='utf-8-sig').read(),
-			style_function=lambda x:
-			{'fillColor':
-				 'green'if x['properties']['NAME']
-						in country_dict.keys()
-						and country_dict[x['properties']['NAME']] < 2
-				 else 'orange' if x['properties']['NAME']
-						in country_dict.keys()
-						and country_dict[x['properties']['NAME']] < 10
-				 else 'red'
-				        if x['properties']['NAME']
-						in country_dict.keys()
-                else 'white'}))
+			style_function=lambda x: {'fillColor':'green'
+			if x['properties']['NAME'] in country_dict.keys()
+			   and country_dict[x['properties']['NAME']] < 2
+else 'orange' if x['properties']['NAME'] in country_dict.keys()
+				 and country_dict[x['properties']['NAME']] < 10
+			else 'red' if x['properties']['NAME'] in country_dict.keys()
+else 'white'}))
 	mappy.add_child(fg_simple)
 	mappy.add_child(fg_statistic)
 	mappy.add_child(fg_percent)
