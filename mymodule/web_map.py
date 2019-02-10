@@ -95,7 +95,7 @@ def dict_cordinats_maker(information_lst):
 	locations_dict = {}
 	country_dict = {}
 	random.shuffle(information_lst)
-	num = 50
+	num = 150
 	# there you can change the number of random locations(change num)
 	if len(information_lst) > num:
 		information_lst = information_lst[:num]
