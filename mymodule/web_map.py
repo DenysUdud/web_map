@@ -95,7 +95,7 @@ def dict_cordinats_maker(information_lst):
 	locations_dict = {}
 	country_dict = {}
 	random.shuffle(information_lst)
-	num = 150
+	num = 50
 	# there you can change the number of random locations(change num)
 	if len(information_lst) > num:
 		information_lst = information_lst[:num]
@@ -212,13 +212,13 @@ def map_maker(name_csv_file, year, country_dict):
 			popup=("The percentage of films filmed at this" +
 			" location is {}% out of {}".format(percent, w_n)),
 			icon=folium.Icon(color=size_colour_creator(n)[1])))
-		fg_counry_statistic.add_child(folium.GeoJson(data=open(
-			'world.json', 'r', encoding='utf-8-sig').read(),
-			style_function=lambda x: {'fillColor':'green'
+	fg_counry_statistic.add_child(folium.GeoJson(data=open(
+		'world.json', 'r', encoding='utf-8-sig').read(),
+		style_function=lambda x: {'fillColor':'green'
 			if x['properties']['NAME'] in country_dict.keys()
-			   and country_dict[x['properties']['NAME']] < 2
+			and country_dict[x['properties']['NAME']] < 2
 else 'orange' if x['properties']['NAME'] in country_dict.keys()
-				 and country_dict[x['properties']['NAME']] < 10
+			and country_dict[x['properties']['NAME']] < 10
 			else 'red' if x['properties']['NAME'] in country_dict.keys()
 else 'white'}))
 	mappy.add_child(fg_simple)
